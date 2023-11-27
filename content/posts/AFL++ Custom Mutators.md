@@ -46,8 +46,31 @@ size_t afl_custom_havoc_mutation(void *data, unsigned char *buf, size_t buf_size
 unsigned char afl_custom_havoc_mutation_probability(void *data);
 // 决定是否要对所给的filename中的测试用例进行测试，返回1/0
 unsigned char afl_custom_queue_get(void *data, const unsigned char *filename);
+// 可以自己发送数据到目标，而不是通过afl
 void (*afl_custom_fuzz_send)(void *data, const u8 *buf, size_t buf_size);
+// 检测测试用例的文件是否发生改变
 u8 afl_custom_queue_new_entry(void *data, const unsigned char *filename_new_queue, const unsigned int *filename_orig_queue);
+// 
 const char* afl_custom_introspection(my_mutator_t *data);
+// deinit
 void afl_custom_deinit(void *data);
 ```
+
+
+
+SQL fuzz的流程
+
+需要什么接口
+
+可以额外提供一些定制的插桩信息
+
+
+
+新数据库只需要连接，变异，生成
+
+
+
+
+
+
+
